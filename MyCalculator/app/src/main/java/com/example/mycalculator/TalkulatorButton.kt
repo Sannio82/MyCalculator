@@ -14,6 +14,7 @@
     @Composable
     fun ButtonNumber(
         number: String,
+        modifier: Modifier,
         onClick: () -> Unit,
     ) {
         Box(
@@ -34,6 +35,7 @@
     @Composable
     fun ButtonSymbol(
         symbol: String,
+        modifier: Modifier,
         onClick: () -> Unit,
     ) {
         Box(
