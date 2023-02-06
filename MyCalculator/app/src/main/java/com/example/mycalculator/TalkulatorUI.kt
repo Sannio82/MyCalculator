@@ -60,7 +60,6 @@ fun TalkulatorUI(
                             onAction(TalkulatorAction.Clear)
                         }
                     )
-
                 }
                 // 1st row
                 Row(

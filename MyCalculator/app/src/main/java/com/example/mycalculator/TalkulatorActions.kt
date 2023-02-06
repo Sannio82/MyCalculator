@@ -1,5 +1,4 @@
 package com.example.mycalculator
-
 sealed class TalkulatorAction {
     data class Number(val number: Int): TalkulatorAction()
     object Clear: TalkulatorAction()

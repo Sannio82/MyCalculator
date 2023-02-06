@@ -8,7 +8,6 @@ class TalkulatorViewModel: ViewModel() {
 
     var state by mutableStateOf(TalkulatorState())
         private set
-
     fun onAction(action: TalkulatorAction) {
         when(action) {
             is TalkulatorAction.Number -> enterNumber(action.number)
@@ -16,10 +15,8 @@ class TalkulatorViewModel: ViewModel() {
             is TalkulatorAction.Clear -> state = TalkulatorState()
             is TalkulatorAction.Operation -> enterOperation(action.operation)
             is TalkulatorAction.Calculate -> performCalculation()
-
         }
     }
-
     private fun performCalculation() {
         val number1 = state.number1.toDoubleOrNull()
         val number2 = state.number2.toDoubleOrNull()
@@ -46,13 +43,11 @@ class TalkulatorViewModel: ViewModel() {
             }
         }
     }
-
     private fun enterOperation(operation: TalkulatorOperation) {
         if(state.number1.isNotBlank()) {
             state = state.copy(operation = operation)
         }
     }
-
     private fun enterDecimal() {
         if (state.operation == null && !state.number1.contains(".")
         ) {
@@ -68,7 +63,6 @@ class TalkulatorViewModel: ViewModel() {
             )
         }
     }
-
     private fun enterNumber(number: Int) {
         if(state.operation == null) {
             if(state.number1.length >= 8) {

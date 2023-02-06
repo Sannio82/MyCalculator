@@ -41,7 +41,6 @@ fun ButtonNumber(
         )
     }
 }
-
 @Composable
 fun ButtonSymbol(
     symbol: String,
@@ -63,7 +62,6 @@ fun ButtonSymbol(
             fontSize = 60.sp,
             color = Color.Cyan
         )
-
     }
 }
 @Composable
@@ -79,8 +77,6 @@ fun ButtonClear(
             .clip(CircleShape)
             .background(Purple500)
             .border(width = 4.dp, Color.LightGray, shape = RoundedCornerShape(10.dp))
-
-
             .clickable { onClick() }
     )
     {
