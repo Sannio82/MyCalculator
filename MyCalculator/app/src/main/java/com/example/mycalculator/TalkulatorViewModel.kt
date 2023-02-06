@@ -31,11 +31,19 @@ class TalkulatorViewModel: ViewModel() {
             is TalkulatorOperation.Multiply -> number1 * number2
             null -> return
             }
-            state = state.copy(
-                number1 = result.toString().take(15),
-                number2 = "",
-                operation = null
-            )
+            if (result.toString().contains("3")) {
+                state = state.copy(
+                    number1 = "Skriv inga treor!",
+                    number2 = "",
+                    operation = null
+                )
+            } else {
+                state = state.copy(
+                    number1 = result.toString().take(15),
+                    number2 = "",
+                    operation = null
+                )
+            }
         }
     }
 
