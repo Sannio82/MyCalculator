@@ -1,14 +1,19 @@
 package com.example.mycalculator
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mycalculator.ui.theme.Purple200
@@ -17,6 +22,7 @@ import com.example.mycalculator.ui.theme.Purple500
 @Composable
 fun TalkulatorUI(
     state: TalkulatorState,
+    calculatorButtonSpacing: Dp = 15.dp,
     modifier: Modifier = Modifier,
     onAction: (TalkulatorAction) -> Unit
 )
@@ -25,8 +31,8 @@ fun TalkulatorUI(
         Column (
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.BottomCenter),
-            verticalArrangement = Arrangement.SpaceBetween
+                .align(Alignment.BottomStart),
+            verticalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
                 ){
             Text (
                 text = state.number1 + (state.operation?.symbol ?: "") + state.number2,
@@ -34,35 +40,28 @@ fun TalkulatorUI(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 32.dp),
-                fontWeight = FontWeight.Bold,
-                fontSize = 80.sp,
-                color = Color.Red,
-                maxLines = 2
+                fontWeight = FontWeight.Light,
+                fontSize = 60.sp,
+                color = Purple500,
+                maxLines = 1
                     )
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier
+                    .background(Color.Transparent),
+                horizontalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
             ) {
-                ButtonSymbol(
-                    symbol = "Clear",
-                    modifier = Modifier
-                        .background(Purple200),
+                ButtonClear(
+                    textClear = "Clear",
+                    modifier = Modifier,
                     onClick = {
                         onAction(TalkulatorAction.Clear)
                     }
                     )
-                ButtonSymbol(
-                    symbol = "/",
-                    modifier = Modifier
-                        .background(Purple500),
-                    onClick = {
-                        onAction(TalkulatorAction.Operation(TalkulatorOperation.Divide))
-                    }
-                )
+
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
             ) {
                 ButtonNumber(
                     number = "7",
@@ -99,7 +98,7 @@ fun TalkulatorUI(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
             ) {
                 ButtonNumber(
                     number = "4",
@@ -136,7 +135,7 @@ fun TalkulatorUI(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
             ) {
                 ButtonNumber(
                     number = "1",
@@ -173,7 +172,7 @@ fun TalkulatorUI(
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(calculatorButtonSpacing)
             ) {
                 ButtonNumber(
                     number = "0",
@@ -186,6 +185,7 @@ fun TalkulatorUI(
                 ButtonSymbol(
                     symbol = ",",
                     modifier = Modifier
+                        .border(width = 3.dp, Color.Cyan)
                         .background(Purple500),
                     onClick = {
                         onAction(TalkulatorAction.Decimal)
@@ -199,7 +199,15 @@ fun TalkulatorUI(
                         onAction(TalkulatorAction.Calculate)
                     }
                 )
+                ButtonSymbol(
+                    symbol = "/",
+                    modifier = Modifier
+                        .background(Purple500),
+                    onClick = {
+                        onAction(TalkulatorAction.Operation(TalkulatorOperation.Divide))
+                    }
+                )
             }
         }
-    }
+     }
 }

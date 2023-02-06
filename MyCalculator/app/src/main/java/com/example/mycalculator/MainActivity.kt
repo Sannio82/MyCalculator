@@ -23,13 +23,12 @@ class MainActivity : ComponentActivity() {
             MyCalculatorTheme {
                 val viewModel = viewModel<TalkulatorViewModel>()
                 val state = viewModel.state
-                val buttonSpacing = 8.dp
+
                 TalkulatorUI(
                     state = state,
                     onAction = viewModel::onAction,
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.LightGray)
                         .padding(16.dp)
                 )
             }
