@@ -1,5 +1,4 @@
 package com.example.mycalculator
-
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -47,17 +46,17 @@ class TalkulatorViewModel: ViewModel() {
     }
 
     private fun enterDecimal() {
-        if (state.operation == null && state.number1.contains(",")
+        if (state.operation == null && !state.number1.contains(".")
             ) {
             state = state.copy(
-                number1 = state.number1 + ","
+                number1 = state.number1 + "."
             )
             return
         }
-        if (state.number2.contains(",")
+        if (!state.number2.contains(".")
         ) {
             state = state.copy(
-                number2 = state.number2 + ","
+                number2 = state.number2 + "."
             )
         }
     }
