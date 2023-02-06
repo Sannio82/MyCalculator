@@ -24,22 +24,22 @@ class TalkulatorViewModel: ViewModel() {
         val number1 = state.number1.toDoubleOrNull()
         val number2 = state.number2.toDoubleOrNull()
         if (number1 != null && number2 != null){
-        val result = when (state.operation) {
-            is TalkulatorOperation.Add -> number1 + number2
-            is TalkulatorOperation.Subtract -> number1 - number2
-            is TalkulatorOperation.Divide -> number1 / number2
-            is TalkulatorOperation.Multiply -> number1 * number2
-            null -> return
+            val result = when (state.operation) {
+                is TalkulatorOperation.Add -> number1 + number2
+                is TalkulatorOperation.Subtract -> number1 - number2
+                is TalkulatorOperation.Divide -> number1 / number2
+                is TalkulatorOperation.Multiply -> number1 * number2
+                null -> return
             }
-            if (result.toString().contains("3")) {
-                state = state.copy(
-                    number1 = "Skriv inga treor!",
+            state = if (result.toString().contains("3")) {
+                state.copy(
+                    number1 = "No 3:s please",
                     number2 = "",
                     operation = null
                 )
             } else {
-                state = state.copy(
-                    number1 = result.toString().take(15),
+                state.copy(
+                    number1 = result.toString().take(25),
                     number2 = "",
                     operation = null
                 )
@@ -55,7 +55,7 @@ class TalkulatorViewModel: ViewModel() {
 
     private fun enterDecimal() {
         if (state.operation == null && !state.number1.contains(".")
-            ) {
+        ) {
             state = state.copy(
                 number1 = state.number1 + "."
             )

@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
                     state = state,
                     onAction = viewModel::onAction,
                     modifier = Modifier
-                        .fillMaxSize()
                         .padding(16.dp)
                 )
             }
