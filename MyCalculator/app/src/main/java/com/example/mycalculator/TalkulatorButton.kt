@@ -15,8 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mycalculator.ui.theme.Purple200
-import com.example.mycalculator.ui.theme.Purple500
+import com.example.mycalculator.ui.theme.*
 
 @Composable
 fun ButtonNumber(
@@ -30,14 +29,14 @@ fun ButtonNumber(
             .clip(CircleShape)
             .size(width = 70.dp, height = 80.dp)
             .border(width = 2.dp, Color.LightGray, shape = RoundedCornerShape(10.dp))
-            .background(Purple200)
+            .background(NumberPink)
             .clickable { onClick() }
     )
     {
         Text(
             text = number,
             fontSize = 60.sp,
-            color = Color.Cyan
+            color = NumberText
         )
     }
 }
@@ -53,14 +52,14 @@ fun ButtonSymbol(
             .clip(CircleShape)
             .size(width = 70.dp, height = 80.dp)
             .border(width = 2.dp, Color.LightGray, shape = RoundedCornerShape(10.dp))
-            .background(Purple500)
+            .background(SymbolPurple)
             .clickable { onClick() }
     )
     {
         Text(
             text = symbol,
             fontSize = 60.sp,
-            color = Color.Cyan
+            color = SymbolText
         )
     }
 }
@@ -75,7 +74,7 @@ fun ButtonClear(
         modifier = Modifier
             .size(width = 150.dp, height = 80.dp)
             .clip(CircleShape)
-            .background(Purple500)
+            .background(SymbolPurple)
             .border(width = 4.dp, Color.LightGray, shape = RoundedCornerShape(10.dp))
             .clickable { onClick() }
     )
@@ -83,7 +82,7 @@ fun ButtonClear(
         Text(
             text = textClear,
             fontSize = 60.sp,
-            color = Color.Cyan
+            color = SymbolText
         )
     }
 }
