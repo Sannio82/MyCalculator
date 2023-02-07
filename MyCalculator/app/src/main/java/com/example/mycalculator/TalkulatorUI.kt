@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mycalculator.ui.theme.Purple200
 import com.example.mycalculator.ui.theme.Purple500
+import com.example.mycalculator.ui.theme.SymbolPurple
+import com.example.mycalculator.ui.theme.SymbolText
 
 @Composable
 fun TalkulatorUI(
@@ -40,7 +42,7 @@ fun TalkulatorUI(
                     .padding(vertical = 32.dp),
                 fontWeight = FontWeight.Light,
                 fontSize = 60.sp,
-                color = Purple500,
+                color = SymbolText,
                 maxLines = 1
             )
             Column(
